@@ -9,5 +9,20 @@
 		  <Counter/>
 
 	  </div>
+
+	  <div class="d-flex flex-wrap gap-3">
+
+        <Card
+		    title="House"
+		    content="Beautiful house with a large garden."/>
+
+		<Card
+		    title="Apartment"
+		    content="Apartment in city center."/>
+
+		<Card
+		    title="Villa"
+		    content="Luxury villa with swimming pool."/>
+	  </div>
     </t>
 </templates>
