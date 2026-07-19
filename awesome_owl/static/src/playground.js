@@ -1,4 +1,4 @@
-import { Component, useState } from "@odoo/owl";
+import { Component, markup } from "@odoo/owl";
 import { Counter } from "./counter/counter";
 import { Card } from "./card/card";
 
@@ -9,4 +9,8 @@ export class Playground extends Component {
 	   Counter,
 	   Card,
    };
+
+   setup() {
+	   this.html = markup("<b>Hello from owl!</b>");
+   }
 }

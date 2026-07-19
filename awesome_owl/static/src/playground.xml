@@ -23,6 +23,10 @@
 		<Card
 		    title="'Villa'"
 		    content="'Luxury villa with swimming pool.'"/>
+
+		<Card
+		    title="'Markup Example'"
+		    content="html"/>
 	  </div>
     </t>
 </templates>
