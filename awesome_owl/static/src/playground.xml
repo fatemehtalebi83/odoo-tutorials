@@ -2,9 +2,23 @@
 <templates xml:space="preserve">
 
     <t t-name="awesome_owl.playground">
-        <div class="p-3">
-            hello world
-        </div>
-    </t>
 
+	  <div class="d-flex align-items-center gap-3">
+	    <span class="fw-bold p-3">hello world!</span>
+
+	    <div class="border rounded p-2 d-flex align-items-center gap-md-3">
+	        <span class="fw-bold">
+		        Counter:
+		        <t t-esc="state.value"/>
+	        </span>
+
+	        <button
+			    class="btn btn-primary"
+			    style="background-color: #71639E; border-color: #71639E; color:white;"
+			    t-on-click="increment">
+		        Increment
+	        </button>
+	    </div>
+	  </div>
+    </t>
 </templates>
