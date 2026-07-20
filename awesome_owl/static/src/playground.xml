@@ -27,7 +27,7 @@
 
 		<Card title="'Villa'">Luxury villa with swimming pool.</Card>
 
-		  <Card title="'HTML'"><b>Hello from Owl!</b></Card>
+		<Card title="'HTML'"><b>Hello from Owl!</b></Card>
 	  </div>
 
 	  <TodoList/>
