@@ -35,5 +35,7 @@
 		    title="'Markup Example'"
 		    content="html"/>
 	  </div>
+
+	  <TodoList/>
     </t>
 </templates>
