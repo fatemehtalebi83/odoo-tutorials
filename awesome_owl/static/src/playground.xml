@@ -5,10 +5,17 @@
 
 	  <div class="d-flex gap-4">
 
-		  <Counter/>
-		  <Counter/>
+		  <Counter onChange.bind="incrementSum"/>
+		  <Counter onChange.bind="incrementSum"/>
 
 	  </div>
+	  <br/>
+
+	  <p class="fw-bold">
+	       The sum is:
+		  <t t-esc="state.sum"/>
+	  </p>
+	  <br/>
 
 	  <div class="d-flex flex-wrap gap-3">
 
