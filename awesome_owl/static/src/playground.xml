@@ -19,21 +19,15 @@
 
 	  <div class="d-flex flex-wrap gap-3">
 
-        <Card
-		    title="'House'"
-		    content="'Beautiful house with a large garden.'"/>
+        <Card title="'House'">
+            <t t-set-slot="default">Beautiful house with a large garden.</t>
+        </Card>
 
-		<Card
-		    title="'Apartment'"
-		    content="'Apartment in city center.'"/>
+		<Card title="'Apartment'">Apartment in city center.</Card>
 
-		<Card
-		    title="'Villa'"
-		    content="'Luxury villa with swimming pool.'"/>
+		<Card title="'Villa'">Luxury villa with swimming pool.</Card>
 
-		<Card
-		    title="'Markup Example'"
-		    content="html"/>
+		  <Card title="'HTML'"><b>Hello from Owl!</b></Card>
 	  </div>
 
 	  <TodoList/>

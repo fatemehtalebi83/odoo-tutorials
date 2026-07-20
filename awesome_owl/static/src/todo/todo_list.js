@@ -9,6 +9,8 @@ export class TodoList extends Component {
         TodoItem,
     };
 
+	static props ={};
+
     setup() {
         this.todos = useState([]);
 		this.nextId = 1;

@@ -12,6 +12,8 @@ export class Playground extends Component {
 	   TodoList,
    };
 
+   static props ={};
+
    setup() {
 	   this.state = useState({
 		   sum: 0,
