@@ -19,6 +19,10 @@
 			</strong>
 			-
 			<t t-esc="props.todo.description"/>
+
+			<span
+                 class="fa fa-remove ms-2 text-danger"
+                 t-on-click="remove"/>
 		</div>
 	</t>
 

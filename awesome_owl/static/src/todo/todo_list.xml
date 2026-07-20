@@ -14,7 +14,8 @@
                 t-as="todo"
                 t-key="todo.id"
                 todo="todo"
-	            toggleState.bind="toggleState"/>
+	            toggleState.bind="toggleState"
+	            removeTodo.bind="removeTodo"/>
         </div>
     </t>
 </templates>
