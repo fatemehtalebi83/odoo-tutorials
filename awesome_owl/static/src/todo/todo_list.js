@@ -35,4 +35,12 @@ export class TodoList extends Component {
         ev.target.value = "";
     }
 }
+
+    toggleState(id) {
+        const todo = this.todos.find(t => t.id === id);
+
+        if (todo) {
+            todo.isCompleted = !todo.isCompleted;
+        }
+    }
 }

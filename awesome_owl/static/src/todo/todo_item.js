@@ -5,5 +5,10 @@ export class TodoItem extends Component{
 
 	static  props = {
 		todo: Object,
+		toggleState: Function,
 	};
+
+	toggleTodo() {
+		this.props.toggleState(this.props.todo.id);
+	}
 }

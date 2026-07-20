@@ -13,7 +13,8 @@
                 t-foreach="todos"
                 t-as="todo"
                 t-key="todo.id"
-                todo="todo"/>
+                todo="todo"
+	            toggleState.bind="toggleState"/>
         </div>
     </t>
 </templates>
