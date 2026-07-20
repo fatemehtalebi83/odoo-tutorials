@@ -3,7 +3,11 @@
 
 	<t t-name="awesome_owl.TodoItem">
 
-		<div class="border rounded p-2 my-2">
+		<div class="border rounded p-2 my-2"
+             t-att-class="{
+                 'text-muted': props.todo.isCompleted,
+                 'text-decoration-line-through': props.todo.isCompleted
+             }">
 
 			<strong>
 				<t t-esc="props.todo.id"/>
