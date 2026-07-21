@@ -1,4 +1,4 @@
-import {Component, useState} from "@odoo/owl";
+import {Component, useState, useExternalListener} from "@odoo/owl";
 import { registry } from"@web/core/registry";
 
 export class ClickerSystrayItem extends Component {
@@ -8,9 +8,24 @@ export class ClickerSystrayItem extends Component {
 		this.state = useState({
 			clicks:0,
 		});
+
+		useExternalListener(
+			document.body,
+			"click",
+			this.onBodyClick,
+			{capture:true}
+		);
 	}
 
-	increment(){
+	increment(ev){
+		ev.stopPropagation();
+		this.state.clicks+= 10;
+	}
+
+	onBodyClick(ev){
+		if (ev.target.closest(".o_clicker_button")){
+			return;
+		}
 		this.state.clicks++;
 	}
 }
