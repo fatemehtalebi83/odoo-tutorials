@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+
+	<t t-name="awesome_clicker.client_action">
+
+		<div class="p-3">
+			<h2>Clicker client action</h2>
+		</div>
+	</t>
+
+</templates>

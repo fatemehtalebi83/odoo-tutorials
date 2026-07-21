@@ -1,5 +1,6 @@
 import {Component, useState, useExternalListener} from "@odoo/owl";
 import { registry } from"@web/core/registry";
+import { useService } from "@web/core/utils/hooks";
 
 export class ClickerSystrayItem extends Component {
 	static template = "awesome_clicker.ClickerSystrayItem";
@@ -15,6 +16,8 @@ export class ClickerSystrayItem extends Component {
 			this.onBodyClick,
 			{capture:true}
 		);
+
+		this.action = useService("action");
 	}
 
 	increment(ev){
@@ -27,6 +30,15 @@ export class ClickerSystrayItem extends Component {
 			return;
 		}
 		this.state.clicks++;
+	}
+
+	openClicker() {
+		this.action.doAction({
+			type:"ir.actions.client",
+			tag:"awesome_clicker.client_action",
+			target:"new",
+			name:"Clicker Game",
+		});
 	}
 }
 
