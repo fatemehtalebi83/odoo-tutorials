@@ -10,6 +10,11 @@ export class ClickerSystrayItem extends Component {
 			clicks:0,
 		});
 
+		this.clicker = useService("clicker");
+
+		this.state = useState(this.clicker.state);
+
+
 		useExternalListener(
 			document.body,
 			"click",
@@ -21,15 +26,15 @@ export class ClickerSystrayItem extends Component {
 	}
 
 	increment(ev){
-		ev.stopPropagation();
-		this.state.clicks+= 10;
+		this.clicker.increment(10);
 	}
 
 	onBodyClick(ev){
-		if (ev.target.closest(".o_clicker_button")){
+		if (ev.target.closest(".o_clicker_button") ||
+		    ev.target.closest(".o_clicker_increment")){
 			return;
 		}
-		this.state.clicks++;
+		this.clicker.increment(1);
 	}
 
 	openClicker() {
