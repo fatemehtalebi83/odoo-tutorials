@@ -23,6 +23,7 @@
         'web.assets_backend': [
             'awesome_clicker/static/src/**/*',
 	        'awesome_clicker/static/src/clicker_service.js',
+	        'awesome_clicker/static/src/clicker_hook.js',
         ],
 
     },

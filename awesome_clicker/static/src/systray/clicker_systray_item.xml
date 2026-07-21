@@ -5,7 +5,7 @@
 		<div class="d-flex align-items-center gap-2">
             <span>
                 Clicks:
-                <t t-esc="state.clicks"/>
+                <t t-esc="clicker.state.clicks"/>
             </span>
 
             <button

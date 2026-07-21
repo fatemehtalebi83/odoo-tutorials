@@ -1,13 +1,13 @@
 import { reactive } from "@odoo/owl";
 import { registry } from"@web/core/registry";
-import {ClickerSystrayItem} from "./systray/clicker_systray_item";
 
-const state = reactive({
-	clicks: 0
-});
 
 export const clickerService ={
 	start(){
+		const state = reactive({
+	          clicks: 0
+        });
+
 		return {
             state,
 

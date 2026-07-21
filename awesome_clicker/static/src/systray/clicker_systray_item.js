@@ -1,18 +1,14 @@
-import {Component, useState, useExternalListener} from "@odoo/owl";
+import {Component, useExternalListener} from "@odoo/owl";
 import { registry } from"@web/core/registry";
 import { useService } from "@web/core/utils/hooks";
+import { useClicker } from "../clicker_hook";
 
 export class ClickerSystrayItem extends Component {
 	static template = "awesome_clicker.ClickerSystrayItem";
 
 	setup() {
-		this.state = useState({
-			clicks:0,
-		});
 
-		this.clicker = useService("clicker");
-
-		this.state = useState(this.clicker.state);
+		this.clicker = useClicker();
 
 
 		useExternalListener(
@@ -25,7 +21,7 @@ export class ClickerSystrayItem extends Component {
 		this.action = useService("action");
 	}
 
-	increment(ev){
+	increment(){
 		this.clicker.increment(10);
 	}
 

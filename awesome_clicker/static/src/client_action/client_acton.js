@@ -1,14 +1,12 @@
 import { Component } from "@odoo/owl";
 import { registry } from"@web/core/registry";
-import { useService } from "@web/core/utils/hooks";
-import { useState } from "@odoo/owl";
+import {useClicker} from "../clicker_hook";
 
 export class ClickerClientAction extends  Component{
 	static template = "awesome_clicker.client_action";
 
 	setup() {
-		this.clicker = useService("clicker");
-		this.state = useState(this.clicker.state);
+		this.clicker = useClicker();
 	}
 
 	increment() {
