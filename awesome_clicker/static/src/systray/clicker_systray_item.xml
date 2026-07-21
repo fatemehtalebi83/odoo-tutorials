@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+
+	<t t-name="awesome_clicker.ClickerSystrayItem">
+		<div class="d-flex align-items-center gap-2">
+            <span>
+                Clicks:
+                <t t-esc="state.clicks"/>
+            </span>
+
+            <button
+                class="btn btn-primary btn-sm"
+                t-on-click="increment">
+                +
+            </button>
+        </div>
+	</t>
+
+</templates>
