@@ -20,7 +20,7 @@ export const clickerService ={
 
 		setInterval(() => {
 			if(clicker.clickBots > 0){
-				clicker.increment(clicker.clickBots*10);
+				clicker.increment(clicker.clickBots*10 + clicker.bigBots*100);
 			}
 		},
 			10000);

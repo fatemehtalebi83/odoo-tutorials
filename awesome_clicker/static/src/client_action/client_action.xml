@@ -31,6 +31,23 @@
                     </button>
                 </t>
 		    </div>
+
+			<div>
+			    <t t-if="clicker.level gte 2">
+
+                    <div>
+                        BigBots:
+                        <ClickValue value="clicker.bigBots"/>
+                    </div>
+
+                    <button
+		                class="btn btn-primary"
+                        t-on-click="buyBigBot"
+                        t-att-disabled="clicker.clicks lt 5000">
+                        Buy ClickBot (5000 clicks)
+                    </button>
+                </t>
+		    </div>
 		</div>
 	</t>
 
