@@ -4,7 +4,8 @@ import { useService } from "@web/core/utils/hooks";
 export function useClicker() {
 	const clicker = useService("clicker");
 
-	clicker.state = useState(clicker.state);
-
-	return clicker;
+	return {
+        ...clicker,
+        state: useState(clicker.state),
+    };
 }
