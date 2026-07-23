@@ -24,6 +24,7 @@
             'awesome_clicker/static/src/**/*',
 	        'awesome_clicker/static/src/clicker_service.js',
 	        'awesome_clicker/static/src/clicker_hook.js',
+	        'awesome_clicker/static/src/form_controller_patch.js',
         ],
 
     },

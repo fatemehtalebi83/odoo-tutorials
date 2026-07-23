@@ -60,7 +60,7 @@ export class ClickerModel extends Reactive {
 		}
 	}
 
-	Reward() {
+	getReward() {
 
          const availableRewards = rewards.filter((reward) => {
 
