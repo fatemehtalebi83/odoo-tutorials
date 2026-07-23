@@ -5,7 +5,7 @@
 		<div class="d-flex align-items-center gap-2">
             <span>
                 Clicks:
-                <ClickValue value="clicker.state.clicks"/>
+                <ClickValue value="clicker.clicks"/>
             </span>
 
             <button
