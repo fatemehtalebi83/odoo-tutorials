@@ -48,6 +48,23 @@
                     </button>
                 </t>
 		    </div>
+
+			<div>
+			    <t t-if="clicker.level gte 3">
+
+                    <div>
+                        Power:
+                        <ClickValue value="clicker.power"/>
+                    </div>
+
+                    <button
+		                class="btn btn-primary"
+                        t-on-click="buyPower"
+                        t-att-disabled="clicker.clicks lt 50000">
+                        Increase Power (50000 clicks)
+                    </button>
+                </t>
+		    </div>
 		</div>
 	</t>
 

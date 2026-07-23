@@ -13,6 +13,7 @@ export class ClickerModel extends Reactive {
     level = 0;
     clickBots = 0;
 	bigBots = 0;
+	power= 1;
 
     increment(inc) {
         this.clicks += inc;
@@ -46,6 +47,14 @@ export class ClickerModel extends Reactive {
 			this.clicks -= 5000;
 
 			this.bigBots += 1;
+		}
+	}
+
+	buyPower() {
+		if(this.clicks >= 50000) {
+			this.clicks -= 50000;
+
+			this.power += 1;
 		}
 	}
 }
