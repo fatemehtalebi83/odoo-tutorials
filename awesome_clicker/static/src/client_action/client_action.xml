@@ -14,6 +14,23 @@
 			<button class="btn btn-primary o_clicker_increment" t-on-click="increment">
 				Increment
 			</button>
+
+			<div>
+			    <t t-if="clicker.state.level gte 1">
+
+                    <div>
+                        ClickBots:
+                        <ClickValue value="clicker.state.clickBots"/>
+                    </div>
+
+                    <button
+		                class="btn btn-primary"
+                        t-on-click="buyClickBot"
+                        t-att-disabled="clicker.state.clicks lt 1000">
+                        Buy ClickBot (1000 clicks)
+                    </button>
+                </t>
+		    </div>
 		</div>
 	</t>
 
