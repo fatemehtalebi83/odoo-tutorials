@@ -1,5 +1,7 @@
 import { Reactive } from "@web/core/utils/reactive";
 import { EventBus } from "@odoo/owl";
+import { rewards } from "./click_rewards";
+import { choose } from "./utils";
 
 export class ClickerModel extends Reactive {
 
@@ -56,5 +58,20 @@ export class ClickerModel extends Reactive {
 
 			this.power += 1;
 		}
+	}
+
+	Reward() {
+
+         const availableRewards = rewards.filter((reward) => {
+
+             return (
+                (!reward.minLevel || this.level >= reward.minLevel)
+                &&
+                (!reward.maxLevel || this.level <= reward.maxLevel)
+             );
+
+         });
+
+        return choose(availableRewards);
 	}
 }
