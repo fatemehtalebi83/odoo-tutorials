@@ -29,6 +29,14 @@ export class ClickerClientAction extends  Component{
 	buyPower() {
 		this.clicker.buyPower();
 	}
+
+	buyPearTree() {
+		this.clicker.buyPearTree();
+	}
+
+	buyCherryTree() {
+		this.clicker.buyCherryTree();
+	}
 }
 
 registry.category("actions").add(

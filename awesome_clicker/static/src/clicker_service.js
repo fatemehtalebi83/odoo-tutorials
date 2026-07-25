@@ -25,6 +25,12 @@ export const clickerService ={
 		},
 			10000);
 
+		setInterval(() => {
+            clicker.pears += clicker.pearTrees;
+            clicker.cherries += clicker.cherryTrees;
+        },
+		    30000);
+
 		return clicker;
 	},
 };

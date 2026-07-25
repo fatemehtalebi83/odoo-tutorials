@@ -65,6 +65,65 @@
                     </button>
                 </t>
 		    </div>
+
+			<div>
+				<t t-if="clicker.level gte 4">
+
+                    <hr/>
+					<h4>Trees</h4>
+
+					<div>
+                        Pear Trees:
+                        <t t-esc="clicker.pearTrees"/>
+                   </div>
+
+					<div>
+                       Cherry Trees:
+                       <t t-esc="clicker.cherryTrees"/>
+                  </div>
+
+					<div>
+                      Total Trees:
+                      <t t-esc="clicker.totalTrees"/>
+                  </div>
+
+					<br/>
+
+					<h4>Fruits</h4>
+
+					<div>
+                      Pears:
+                      <t t-esc="clicker.pears"/>
+                  </div>
+
+					<div>
+                      Cherries:
+                      <t t-esc="clicker.cherries"/>
+                  </div>
+
+					<div>
+                      Total Fruits:
+                      <t t-esc="clicker.totalFruits"/>
+                  </div>
+
+					<br/>
+
+				  <button
+				      class="btn btn-primary me-2"
+				      t-on-click="buyPearTree"
+				      t-att-disabled="clicker.clicks lt 1000000">
+                      Buy Pear Tree (1000000 clicks)
+                  </button>
+
+				  <button
+				      class="btn btn-primary"
+				      t-on-click="buyCherryTree"
+				      t-att-disabled="clicker.clicks lt 1000000">
+                      Buy Cherry Tree (1000000 clicks)
+                  </button>
+				</t>
+			</div>
+
 		</div>
 	</t>
 
