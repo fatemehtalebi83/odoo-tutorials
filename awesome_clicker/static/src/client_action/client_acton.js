@@ -2,16 +2,29 @@ import { Component } from "@odoo/owl";
 import { registry } from"@web/core/registry";
 import {useClicker} from "../clicker_hook";
 import { ClickValue } from "../click_value/click_value";
+import { Notebook } from "@web/core/notebook/notebook";
 
 export class ClickerClientAction extends  Component{
 	static template = "awesome_clicker.client_action";
 
 	static components = {
 		ClickValue,
+		Notebook,
 	};
 
 	setup() {
 		this.clicker = useClicker();
+
+		this.pages = [
+    {
+        id: "clicks",
+        title: "Clicks",
+    },
+    {
+        id: "trees",
+        title: "Trees and Fruits",
+    },
+];
 	}
 
 	increment() {
