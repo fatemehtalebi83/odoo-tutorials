@@ -2,24 +2,60 @@
 <templates xml:space="preserve">
 
 	<t t-name="awesome_clicker.ClickerSystrayItem">
-		<div class="d-flex align-items-center gap-2">
-            <span>
-                Clicks:
-                <ClickValue value="clicker.clicks"/>
-            </span>
+    <Dropdown>
 
-            <button
-                class="btn btn-primary btn-sm o_clicker_button"
-                t-on-click="increment">
-                +
-            </button>
+	    <button class="o_systray_item d-flex align-items-center gap-2">
+		    <span>
+		        <t t-esc="clicker.clicks"/>
+		        <i class="fa fa-mouse-pointer me-1"/>
+		    </span>
+		    ,
+		    <span>
+		        <t t-esc="clicker.totalTrees"/>
+		        <i class="fa fa-tree me-1"/>
+		    </span>
+		    ,
+		    <span>
+		        <t t-esc="clicker.totalFruits"/>
+		        <i class="fa fa-apple me-1"/>
+		    </span>
+        </button>
 
-			<button
-                class="btn btn-primary btn-sm o_clicker_button"
-                t-on-click="openClicker">
-                Open
-            </button>
-        </div>
-	</t>
+
+	    <t t-set-slot="content">
+
+             <DropdownItem onSelected.bind="openClicker">
+	             <button class="btn btn-primary w-100">
+                     Open the clicker game
+                 </button>
+             </DropdownItem>
+
+		    <DropdownItem onSelected.bind="buyClickBot">
+	              <button class="btn btn-primary w-100">
+                      Buy a ClickBot
+                  </button>
+             </DropdownItem>
+
+
+		    <div class="px-3 py-2">
+                <t t-esc="clicker.pearTrees"/>x pearTree
+            </div>
+
+		    <div class="px-3 py-2">
+                <t t-esc="clicker.cherryTrees"/>x cherryTree
+            </div>
+
+		    <div class="px-3 py-2">
+                <t t-esc="clicker.pears"/>x pear
+            </div>
+
+		    <div class="px-3 py-2">
+                <t t-esc="clicker.cherries"/>x cherry
+            </div>
+
+	    </t>
+    </Dropdown>
+
+</t>
 
 </templates>

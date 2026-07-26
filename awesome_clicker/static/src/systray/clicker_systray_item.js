@@ -3,12 +3,16 @@ import { registry } from"@web/core/registry";
 import { useService } from "@web/core/utils/hooks";
 import { useClicker } from "../clicker_hook";
 import { ClickValue } from "../click_value/click_value";
+import { Dropdown } from "@web/core/dropdown/dropdown";
+import { DropdownItem } from "@web/core/dropdown/dropdown_item";
 
 export class ClickerSystrayItem extends Component {
 	static template = "awesome_clicker.ClickerSystrayItem";
 
 	static components = {
 		ClickValue,
+		Dropdown,
+		DropdownItem,
 	};
 
 	setup() {
@@ -46,11 +50,15 @@ export class ClickerSystrayItem extends Component {
 			name:"Clicker Game",
 		});
 	}
+
+	buyClickBot() {
+        this.clicker.buyClickBot();
+    }
 }
 
 registry.category("systray").add(
     "awesome_clicker.systray",
     {
         Component: ClickerSystrayItem,
-    }
+        sequence: 100, }
 );
