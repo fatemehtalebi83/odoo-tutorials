@@ -4,6 +4,9 @@ import { ClickerModel } from "./clicker_model";
 import { browser } from "@web/core/browser/browser";
 
 const STORAGE_KEY = "awesome_clicker_state";
+const STATE_VERSION = 1;
+
+const migration = [];
 
 export const clickerService ={
 	start(env){
@@ -13,7 +16,19 @@ export const clickerService ={
 
 		if (savedState) {
             const state = JSON.parse(savedState);
-            delete state.bus;
+
+			while (state.version < STATE_VERSION) {
+				const migration = migrations.find(
+					(m) => m.fromVersion === state.version
+				);
+
+				if(!migration) {
+					break;
+				}
+
+				migration.apply(state);
+				state.version = migration.toVersion;
+			}
             Object.assign(clicker, state);
         }
 
@@ -41,6 +56,7 @@ export const clickerService ={
             browser.localStorage.setItem(
                 STORAGE_KEY,
                 JSON.stringify({
+	                version: STATE_VERSION,
                     clicks: clicker.clicks,
                     level: clicker.level,
                     clickBots: clicker.clickBots,
