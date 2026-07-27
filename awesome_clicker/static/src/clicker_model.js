@@ -19,9 +19,11 @@ export class ClickerModel extends Reactive {
 
 	pearTrees = 0;
 	cherryTrees = 0;
+	peachTrees = 0;
 
 	pears = 0;
 	cherries = 0;
+	peaches = 0;
 
     increment(inc) {
         this.clicks += inc;
@@ -100,11 +102,19 @@ export class ClickerModel extends Reactive {
 		}
 	}
 
+	buyPeachTree() {
+		if(this.clicks >= 1000000) {
+			this.clicks -= 1000000;
+
+			this.peachTrees++;
+		}
+	}
+
 	get totalTrees() {
-		return this.pearTrees + this.cherryTrees;
+		return this.pearTrees + this.cherryTrees + this.peachTrees;
 	}
 
 	get totalFruits() {
-		return this.pears + this.cherries;
+		return this.pears + this.cherries + this.peaches;
 	}
 }

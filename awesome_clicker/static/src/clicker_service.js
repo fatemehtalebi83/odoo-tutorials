@@ -4,9 +4,18 @@ import { ClickerModel } from "./clicker_model";
 import { browser } from "@web/core/browser/browser";
 
 const STORAGE_KEY = "awesome_clicker_state";
-const STATE_VERSION = 1;
+const STATE_VERSION = 2;
 
-const migration = [];
+const migrations = [
+	{
+		fromVersion: 1,
+		toVersion: 2,
+		apply(state) {
+			state.peachTrees = 0;
+			state.peaches = 0;
+		},
+	},
+];
 
 export const clickerService ={
 	start(env){
@@ -66,8 +75,10 @@ export const clickerService ={
                     power: clicker.power,
                     pearTrees: clicker.pearTrees,
                     cherryTrees: clicker.cherryTrees,
+	                peachTrees: clicker.peachTrees,
                     pears: clicker.pears,
                     cherries: clicker.cherries,
+	                peaches: clicker.peaches,
                 })
             );
 		}, 10000);
@@ -75,6 +86,7 @@ export const clickerService ={
 		setInterval(() => {
             clicker.pears += clicker.pearTrees;
             clicker.cherries += clicker.cherryTrees;
+			clicker.peaches += clicker.peachTrees;
         },
 		    30000);
 

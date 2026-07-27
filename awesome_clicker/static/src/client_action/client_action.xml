@@ -86,6 +86,11 @@
                             <t t-esc="clicker.cherryTrees"/>
                         </div>
 
+		               <div>
+                            Peach Trees:
+                            <t t-esc="clicker.peachTrees"/>
+                        </div>
+
 		                <div>
                             Total Trees:
                             <t t-esc="clicker.totalTrees"/>
@@ -103,6 +108,11 @@
 					    <div>
                             Cherries:
                             <t t-esc="clicker.cherries"/>
+                        </div>
+
+		                <div>
+                            Peaches:
+                            <t t-esc="clicker.peaches"/>
                         </div>
 
 					    <div>
@@ -124,6 +134,13 @@
 				            t-on-click="buyCherryTree"
 				            t-att-disabled="clicker.clicks lt 1000000">
                               Buy Cherry Tree (1000000 clicks)
+                        </button>
+
+		                <button
+				            class="btn btn-primary ms-2"
+				            t-on-click="buyPeachTree"
+				            t-att-disabled="clicker.clicks lt 1000000">
+                              Buy Peach Tree (1000000 clicks)
                         </button>
 				    </t>
 	                </div>
