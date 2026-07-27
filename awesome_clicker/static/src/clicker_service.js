@@ -17,6 +17,8 @@ export const clickerService ={
 		if (savedState) {
             const state = JSON.parse(savedState);
 
+			state.version ??= 1;
+
 			while (state.version < STATE_VERSION) {
 				const migration = migrations.find(
 					(m) => m.fromVersion === state.version
