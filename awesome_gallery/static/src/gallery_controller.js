@@ -1,9 +1,10 @@
 import { Component, onWillStart, onWillUpdateProps, useState } from "@odoo/owl";
 import { Layout } from "@web/search/layout";
 import { useService } from "@web/core/utils/hooks";
+import { KeepLast } from "@web/core/utils/concurrency";
 
 export class GalleryController extends Component {
-	static template ="awesome_gallery.GalleryController";
+	static template = "awesome_gallery.GalleryController";
 
 	static components = {
 		Layout,
@@ -11,12 +12,14 @@ export class GalleryController extends Component {
 
 	setup() {
 		this.orm = useService("orm");
+		this.keepLast = new KeepLast();
+
 
 		this.state = useState({
 			records: [],
 		});
 
-		onWillStart(async () =>{
+		onWillStart(async () => {
 			await this.loadImages(this.props.domain);
 		});
 
@@ -25,20 +28,22 @@ export class GalleryController extends Component {
 		});
 	}
 
-	async loadImages(domain) {
-		const { records } = await this.orm.webSearchRead(
-			this.props.resModel,
-			domain,
-			{
-				specification: {
-					[this.props.imageField]: {},
-				},
-				context: {
-					bin_size: true,
-				},
-			}
-		);
-
-		this.state.records = records;
-	}
+	async loadImages(domain, resModel = this.props.resModel, imageField = this.props.imageField) {
+    this.keepLast.add(
+        this.orm.webSearchRead(
+            resModel,
+            domain,
+            {
+                specification: {
+                    [imageField]: {},
+                },
+                context: {
+                    bin_size: true,
+                },
+            }
+        )
+    ).then(({ records }) => {
+        this.state.records = records;
+    });
+}
 }
