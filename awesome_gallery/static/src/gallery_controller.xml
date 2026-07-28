@@ -3,7 +3,24 @@
 
 	<t t-name="awesome_gallery.GalleryController">
 		<Layout display="props.display">
-			<h2>Hello World!</h2>
+
+			<t t-set-slot="default">
+
+				<div t-foreach="state.records"
+				     t-as="record"
+				     t-key="record.id">
+
+					<div>id:
+					     <t t-esc="record.id"/>
+					     bin_size:
+					     <t t-esc="record[props.imageField]"/>
+					</div>
+
+					<hr/>
+				</div>
+
+			</t>
+
 		</Layout>
 	</t>
 </template>
