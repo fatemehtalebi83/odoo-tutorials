@@ -4,7 +4,7 @@
     <t t-name="awesome_gallery.GalleryRenderer">
 
         <div
-            t-foreach="props.records"
+            t-foreach="props.model.state.records"
             t-as="record"
             t-key="record.id">
 

@@ -6,9 +6,11 @@
 
 			<t t-set-slot="default">
 
-				<GalleryRenderer
-					records="model.state.records"
-					imageField="props.imageField"/>
+				<t
+					t-component="props.Renderer"
+					model="model"
+					imageField="props.archInfo.imageField"
+					/>
 
 			</t>
 
