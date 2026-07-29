@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rng:grammar xmlns:rng="http://relaxng.org/ns/structure/1.0">
+
+    <rng:start>
+        <rng:element name="gallery">
+            <rng:attribute name="image_field"/>
+            <rng:optional>
+                <rng:attribute name="tooltip_field"/>
+            </rng:optional>
+        </rng:element>
+    </rng:start>
+
+</rng:grammar>
