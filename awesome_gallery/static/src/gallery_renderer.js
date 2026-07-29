@@ -9,6 +9,7 @@ export class GalleryRenderer extends Component {
 		model: Object,
 		imageField: String,
 		switchView: Function,
+		tooltipField: {type:String, optional:true},
 	};
 
 	setup() {

@@ -23,6 +23,7 @@ export class GalleryController extends Component {
 			this.orm,
 			this.props.resModel,
 			this.props.archInfo.imageField,
+			this.props.archInfo.tooltipField,
 		);
 
 		onWillStart(async () => this.model.load(this.props.domain));
