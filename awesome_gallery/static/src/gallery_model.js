@@ -12,10 +12,11 @@ export class GalleryModel {
 
 		this.state = reactive({
 			records: [],
+			count:0,
 		})
 	}
 
-	async load(domain) {
+	async load(domain, offset=0, limit=80) {
 		const specification = {
 			[this.imageField]: {},
 		};
@@ -23,12 +24,14 @@ export class GalleryModel {
 		if(this.tooltipField) {
 			specification[this.tooltipField] = {};
 		}
-		const { records } = await this.keepLast.add(
+		const { records, length } = await this.keepLast.add(
 			this.orm.webSearchRead(
 				this.resModel,
 				domain,
 				{
 					specification,
+					offset,
+					limit,
 					context: {
 						bin_size: true,
 					},
@@ -37,5 +40,6 @@ export class GalleryModel {
 		);
 
 		this.state.records = records;
+		this.state.count = length;
 	}
 }

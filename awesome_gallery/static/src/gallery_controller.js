@@ -2,6 +2,7 @@ import { Component, onWillStart, onWillUpdateProps, useState } from "@odoo/owl";
 import { Layout } from "@web/search/layout";
 import { useService } from "@web/core/utils/hooks";
 import {standardViewProps} from "@web/views/standard_view_props";
+import { usePager } from "@web/search/pager_hook";
 
 export class GalleryController extends Component {
 	static template = "awesome_gallery.GalleryController";
@@ -19,6 +20,11 @@ export class GalleryController extends Component {
 
 	setup() {
 		this.orm = useService("orm");
+
+		this.state = useState({
+			offset: 0,
+			limit: 80,
+		});
 		this.model = new this.props.Model(
 			this.orm,
 			this.props.resModel,
@@ -26,8 +32,37 @@ export class GalleryController extends Component {
 			this.props.archInfo.tooltipField,
 		);
 
-		onWillStart(async () => this.model.load(this.props.domain));
+		onWillStart(async () => {
+			await this.model.load(
+				this.props.domain,
+				this.state.offset,
+				this.state.limit,
+				);
+		});
 
-		onWillUpdateProps(async (nextProps) => this.model.load(nextProps.domain));
+		onWillUpdateProps(async (nextProps) => {
+			await this.model.load(
+				this.nextProps.domain,
+				this.state.offset,
+				this.state.limit,
+				);
+		});
+
+		usePager(() => ({
+			offset: this.state.offset,
+			limit: this.state.limit,
+			total: this.model.state.count,
+
+			onUpdate: async ({ offset, limit }) => {
+				this.state.offset = offset;
+				this.state.limit = limit;
+
+				await this.model.load(
+					this.props.domain,
+					offset,
+					limit,
+				);
+			},
+		}));
 	}
 }
