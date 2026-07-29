@@ -13,6 +13,7 @@
 	            <t t-if="record[props.imageField]">
 		            <img
 			            t-att-src="getImageUrl(record)"
+			            t-on-click="() => openRecord(record)"
 			            width="150"
 			            height="150"/>
 	            </t>

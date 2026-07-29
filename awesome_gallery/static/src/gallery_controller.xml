@@ -10,6 +10,7 @@
 					t-component="props.Renderer"
 					model="model"
 					imageField="props.archInfo.imageField"
+					switchView="props.switchView"
 					/>
 
 			</t>
