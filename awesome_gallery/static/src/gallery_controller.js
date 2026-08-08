@@ -31,6 +31,7 @@ export class GalleryController extends Component {
 			this.props.resModel,
 			this.props.archInfo.imageField,
 			this.props.archInfo.tooltipField,
+			this.props.archInfo.fields,
 		  )
 		);
 
@@ -44,7 +45,7 @@ export class GalleryController extends Component {
 
 		onWillUpdateProps(async (nextProps) => {
 			await this.model.load(
-				this.nextProps.domain,
+				nextProps.domain,
 				this.state.offset,
 				this.state.limit,
 				);

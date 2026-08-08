@@ -17,12 +17,24 @@
     </record>
 
 	<record id="contacts_gallery_view" model="ir.ui.view">
-		<field name="name">contacts.gallery</field>
-		<field name="model">res.partner</field>
-		<field name="type">gallery</field>
-		<field name="arch" type="xml">
-			<gallery image_field="image_1920" tooltip_field="name"/>
-		</field>
-	</record>
-    </data>
+    <field name="name">awesome_gallery.orders.gallery</field>
+    <field name="model">res.partner</field>
+    <field name="arch" type="xml">
+        <gallery image_field="image_1920" tooltip_field="name">
+            <field name="email"/>
+            <field name="name"/>
+
+            <tooltip-template>
+                <p class="m-0">
+                    name: <t t-esc="name"/>
+                </p>
+                <p class="m-0">
+                    e-mail: <t t-esc="email"/>
+                </p>
+            </tooltip-template>
+
+        </gallery>
+    </field>
+</record>
+</data>
 </odoo>

@@ -31,17 +31,19 @@ def schema_gallery(arch, model=None, **kwargs):
 
     # Validate that the referenced fields exist
     if model is not None:
-        image_field = arch.get("image_field")
-        tooltip_field = arch.get("tooltip_field")
+	    image_field = arch.get("image_field")
+	    tooltip_field = arch.get("tooltip_field")
 
-        if image_field and image_field not in model._fields:
-            raise ValidationError(
-                f"Unknown image_field '{image_field}' on model '{model._name}'."
-            )
+	    model_obj = kwargs["env"][model]
 
-        if tooltip_field and tooltip_field not in model._fields:
-            raise ValidationError(
-                f"Unknown tooltip_field '{tooltip_field}' on model '{model._name}'."
-            )
+	    if image_field and image_field not in model_obj._fields:
+		    raise ValidationError(
+			    f"Unknown image_field '{image_field}' on model '{model}'."
+		    )
+
+	    if tooltip_field and tooltip_field not in model_obj._fields:
+		    raise ValidationError(
+			    f"Unknown tooltip_field '{tooltip_field}' on model '{model}'."
+		    )
 
     return True

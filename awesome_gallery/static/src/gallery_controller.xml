@@ -12,6 +12,7 @@
 					imageField="props.archInfo.imageField"
 					switchView="props.switchView"
 					tooltipField="props.archInfo.tooltipField"
+					tooltipTemplate="props.archInfo.tooltipTemplate"
 					/>
 
 			</t>

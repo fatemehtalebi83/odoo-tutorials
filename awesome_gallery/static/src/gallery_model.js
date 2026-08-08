@@ -2,11 +2,12 @@ import { reactive } from "@odoo/owl";
 import { KeepLast } from "@web/core/utils/concurrency";
 
 export class GalleryModel {
-	constructor(orm, resModel, imageField, tooltipField) {
+	constructor(orm, resModel, imageField, tooltipField, fields) {
 		this.orm = orm;
 		this.resModel = resModel;
 		this.imageField = imageField;
 		this.tooltipField = tooltipField;
+		this.fields = fields;
 
 		this.keepLast = new KeepLast();
 
@@ -24,9 +25,14 @@ export class GalleryModel {
 			write_date: {},
 		};
 
+		for (const field of this.fields) {
+			specification[field] = {};
+		}
+
 		if(this.tooltipField) {
 			specification[this.tooltipField] = {};
 		}
+
 		const { records, length } = await this.keepLast.add(
 			this.orm.webSearchRead(
 				this.resModel,
