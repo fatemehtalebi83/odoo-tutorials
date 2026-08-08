@@ -17,8 +17,11 @@ export class GalleryModel {
 	}
 
 	async load(domain, offset=0, limit=80) {
+		this.domain= domain;
+
 		const specification = {
 			[this.imageField]: {},
+			write_date: {},
 		};
 
 		if(this.tooltipField) {

@@ -7,22 +7,36 @@
         <div
             t-foreach="props.model.state.records"
             t-as="record"
-            t-key="record.id">
+            t-key="record.id + '-' + record.write_date">
 
-            <div class="m-2">
+            <div class="m-2 position-relative" style="width: 150px;">
 	            <t t-if="record[props.imageField]">
 		            <img
 			            t-att-src="getImageUrl(record)"
 			            t-att-data-tooltip="props.tooltipField ?record[props.tooltipField]:''"
 			            t-on-click="() => openRecord(record)"
 			            width="150"
-			            height="150"/>
+			            height="150"
+		              style="object-fit: cover;"/>
 	            </t>
 
 	            <t t-else="">
 		            <div style="width:150px; height:150px; border:1px solid #ccc;">
 		            </div>
 	            </t>
+
+	            <FileUploader onUploaded="(file) => onUploaded(record, file)">
+
+		            <t t-set-slot="toggler">
+		                <button
+				                type="button"
+				                class="btn btn-sm btn-primary position-absolute"
+				                style="right: 5px; bottom: 5px;"
+		                    >
+			              Upload Image
+		                </button>
+		            </t>
+	            </FileUploader>
             </div>
 
             <hr/>

@@ -25,11 +25,13 @@ export class GalleryController extends Component {
 			offset: 0,
 			limit: 80,
 		});
-		this.model = new this.props.Model(
+		this.model = useState(
+		  new this.props.Model(
 			this.orm,
 			this.props.resModel,
 			this.props.archInfo.imageField,
 			this.props.archInfo.tooltipField,
+		  )
 		);
 
 		onWillStart(async () => {
