@@ -12,6 +12,15 @@
 					    Active Customers
 				    </label>
 				</p>
+
+				<div style="font-size: 12px;">
+				    <Pager
+					  offset="state.offset"
+					  limit="state.limit"
+					  total="state.total"
+					  onUpdate.bind="onPagerUpdate"/>
+				</div>
+
 				<hr/>
 				<p>
 					<input
