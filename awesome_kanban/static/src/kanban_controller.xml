@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t
+        t-name="awesome_kanban.AwesomeKanbanController"
+        t-inherit="web.KanbanView"
+        t-inherit-mode="primary"
+    >
+
+        <xpath expr="//t[@t-component='props.Renderer']" position="replace">
+
+            <div class="d-flex w-100">
+
+                <div
+                    class="border-end"
+                    style="width: 300px; flex-shrink: 0;"
+                >
+                    <CustomerList
+                        selectCustomer="() => {}"
+                    />
+                </div>
+
+                <div class="flex-grow-1">
+                    <t
+                        t-component="props.Renderer"
+                        t-if="model.isReady"
+                        list="model.root"
+                        archInfo="props.archInfo"
+                        Compiler="props.Compiler"
+                        readonly="props.readonly"
+                        forceGlobalClick="props.forceGlobalClick"
+                        deleteRecord.bind="deleteRecord"
+                        openRecord.bind="openRecord"
+                        noContentHelp="props.info.noContentHelp"
+                        scrollTop.bind="scrollTop"
+                        canQuickCreate="canQuickCreate"
+                        quickCreateState="quickCreateState"
+                        progressBarState="progressBarState"
+                    />
+                </div>
+
+            </div>
+
+        </xpath>
+
+    </t>
+
+</templates>
