@@ -27,20 +27,12 @@ export class CustomerList extends Component {
 		});
 	}
 
-	onActiveCustomerChange = (ev) => {
-		this.state.displayActiveCustomers = ev.target.checked;
-	};
-
-	onSearch = (ev) => {
-		this.state.searchString = ev.target.value;
-	};
-
 	get displayedCustomer() {
 		let customers = this.state.customers;
 
 		if(this.state.displayActiveCustomers) {
 			customers = customers.filter(
-				(customer) => customer.opportunity_ids?.length > 0
+				(customer) => customer.opportunity_ids.length > 0
 			);
 		}
 
