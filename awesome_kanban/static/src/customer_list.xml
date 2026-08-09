@@ -6,9 +6,15 @@
 
 			<div class="p-3 border-bottom">
 				Customers
+				<p>
+				<label>
+					<input type="checkbox" t-on-click="onActiveCustomerChange"/>
+					Active Customers
+				</label>
+				</p>
 			</div>
 
-			<t t-foreach="state.customers" t-as="customer" t-key="customer.id">
+			<t t-foreach="displayedCustomer" t-as="customer" t-key="customer.id">
 				<div class="p-3 border-bottom"
 				     t-on-click="() => props.selectCustomer(customer)">
 					<t t-esc="customer.name"/>
