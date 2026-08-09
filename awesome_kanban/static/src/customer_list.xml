@@ -10,7 +10,7 @@
 
 			<t t-foreach="state.customers" t-as="customer" t-key="customer.id">
 				<div class="p-3 border-bottom"
-				     t-on-click="() => props.selectCustomerList">
+				     t-on-click="() => props.selectCustomer(customer)">
 					<t t-esc="customer.name"/>
 				</div>
 			</t>

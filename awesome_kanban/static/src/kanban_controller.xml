@@ -16,7 +16,7 @@
                     style="width: 300px; flex-shrink: 0;"
                 >
                     <CustomerList
-                        selectCustomer="() => {}"
+                        selectCustomer.bind="selectCustomer"
                     />
                 </div>
 
