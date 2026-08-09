@@ -12,6 +12,14 @@
 					Active Customers
 				</label>
 				</p>
+				<hr/>
+				<p>
+					<input
+					    type="text"
+					     class="form-control"
+					     placeholder="Search"
+					     t-on-input="onSearch"/>
+				</p>
 			</div>
 
 			<t t-foreach="displayedCustomer" t-as="customer" t-key="customer.id">
