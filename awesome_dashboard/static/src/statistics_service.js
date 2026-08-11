@@ -1,19 +1,28 @@
 import { registry } from "@web/core/registry";
 import { rpc } from "@web/core/network/rpc";
-import { memoize } from "@web/core/utils/functions";
+import { reactive } from "@odoo/owl";
 
 const statisticsService = {
 	start() {
-		const loadStatistics = memoize(
-			async() => {
-				console.log("RPC called!");
-				return await rpc("/awesome_dashboard/statistics");
+		const statistics = reactive({});
+
+		async function loadStatistics() {
+			const data = await rpc("/awesome_dashboard/statistics");
+
+			Object.assign(statistics, data);
 			}
+
+			loadStatistics();
+
+		    setInterval(() => {
+				loadStatistics();
+		    },600000
 		);
 
-		return {
-			loadStatistics,
-		};
+		    return {
+				statistics,
+			    loadStatistics,
+		    };
 	},
 };
 

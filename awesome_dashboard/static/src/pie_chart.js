@@ -1,4 +1,4 @@
-import { Component, onMounted, onWillStart, useRef } from "@odoo/owl";
+import {Component, onMounted, onWillStart, onWillUnmount, useEffect, useRef} from "@odoo/owl";
 import { loadJS } from "@web/core/assets";
 
 export class PieChart extends Component {
@@ -15,15 +15,34 @@ export class PieChart extends Component {
 			await loadJS("/web/static/lib/Chart/Chart.js");
 		});
 
-		onMounted(() => {
-			this.renderChart();
+		useEffect(
+			() => {
+				if(this.props.data) {
+					this.renderChart();
+				}
+			},
+			() => [this.props.data]
+		);
+
+		onWillUnmount(() => {
+			if(this.chart) {
+				this.chart.destroy();
+			}
 		});
 	}
 
 	renderChart() {
 		const data = this.props.data;
 
-		new Chart(this.canvasRef.el, {
+		if(!data || !this.canvasRef.el) {
+			return;
+		}
+
+		if(this.chart) {
+		    this.chart.destroy();
+		}
+
+		this.chart = new Chart(this.canvasRef.el, {
 			type: "pie",
 			data: {
 				labels: Object.keys(data),
