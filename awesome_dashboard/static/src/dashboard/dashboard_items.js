@@ -1,8 +1,9 @@
+import { registry } from "@web/core/registry";
 import { NumberCard } from "./number_card";
 import { PieChartCard } from "./pie_chart_card";
 
-export const items = [
-    {
+const items = {
+    average_quantity: {
         id: "average_quantity",
         description: "Average amount of t-shirt",
         Component: NumberCard,
@@ -13,7 +14,7 @@ export const items = [
         }),
     },
 
-    {
+    average_time: {
         id: "average_time",
         description: "Average time for an order",
         Component: NumberCard,
@@ -24,7 +25,7 @@ export const items = [
         }),
     },
 
-    {
+    nb_new_orders: {
         id: "nb_new_orders",
         description: "Number of new orders",
         Component: NumberCard,
@@ -35,7 +36,7 @@ export const items = [
         }),
     },
 
-    {
+    nb_cancelled_orders: {
         id: "nb_cancelled_orders",
         description: "Number of cancelled orders",
         Component: NumberCard,
@@ -46,7 +47,7 @@ export const items = [
         }),
     },
 
-    {
+    total_amount: {
         id: "total_amount",
         description: "Total amount of new orders",
         Component: NumberCard,
@@ -57,7 +58,7 @@ export const items = [
         }),
     },
 
-    {
+    orders_by_size: {
         id: "orders_by_size",
         description: "Shirt orders by size",
         Component: PieChartCard,
@@ -67,4 +68,8 @@ export const items = [
             data: data.orders_by_size,
         }),
     },
-];
+};
+
+for (const item of Object.values(items)) {
+    registry.category("awesome_dashboard").add(item.id, item);
+}
