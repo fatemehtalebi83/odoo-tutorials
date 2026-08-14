@@ -4,6 +4,7 @@ import { Layout } from "@web/search/layout";
 import { useService } from "@web/core/utils/hooks";
 import { DashboardItem } from "./dashboard_item";
 import { PieChart } from "./pie_chart";
+import { items } from "./dashboard_items";
 
 class AwesomeDashboard extends Component {
     static template = "awesome_dashboard.AwesomeDashboard";
@@ -22,6 +23,7 @@ class AwesomeDashboard extends Component {
 			this.statisticsService.statistics
 		);
 
+		this.items = items;
 	}
 
 	openCustomers() {
