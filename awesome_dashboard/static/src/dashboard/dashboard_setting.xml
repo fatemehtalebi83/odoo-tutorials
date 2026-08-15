@@ -2,9 +2,13 @@
 <templates xml:space="preserve">
 
     <t t-name="awesome_dashboard.DashboardSettings">
-        <Dialog title="'Dashboard Settings'">
+        <Dialog title="'Dashboard Item Configuration'">
 
             <div class="p-3">
+
+	            <p>
+		            Which cards do you want to see?
+	            </p>
 
                 <t
                     t-foreach="props.items"
