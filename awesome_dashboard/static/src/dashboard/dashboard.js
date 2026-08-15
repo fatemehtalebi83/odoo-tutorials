@@ -5,6 +5,7 @@ import { useService } from "@web/core/utils/hooks";
 import { DashboardItem } from "./dashboard_item";
 import { PieChart } from "./pie_chart";
 import { DashboardSettings } from "./dashboard_setting";
+import { _t } from "@web/core/l10n/translation";
 
 class AwesomeDashboard extends Component {
     static template = "awesome_dashboard.AwesomeDashboard";
@@ -40,7 +41,7 @@ class AwesomeDashboard extends Component {
 	openLeads() {
 		this.action.doAction({
 			type: "ir.actions.act_window",
-			name: "Leads",
+			name: _t("Leads"),
 			res_model: "crm.lead",
 			views: [
 				[false, "list"],
@@ -79,6 +80,21 @@ class AwesomeDashboard extends Component {
 					...this.getVisibleItems()
 				);
 			},
+		});
+	}
+
+	openOrderBySize(size) {
+		this.action.doAction({
+			type: "ir.actions.act_window",
+			name: `Orders${size.toUpperCase()}`,
+			res_model: "sale.order",
+			views: [
+				[false, "list"],
+				[false, "form"],
+			],
+			domain: [
+				["order_line.product_id.name", "ilike", size],
+			],
 		});
 	}
 }

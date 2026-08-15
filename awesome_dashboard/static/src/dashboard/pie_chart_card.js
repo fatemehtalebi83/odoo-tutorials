@@ -11,5 +11,6 @@ export class PieChartCard extends Component {
     static props = {
         title: String,
         data: Object,
+	    onSliceClick: Function,
     };
 }

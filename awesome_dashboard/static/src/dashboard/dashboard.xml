@@ -37,6 +37,11 @@
 
 					    <t t-set="itemProp" t-value="item.props ? item.props(statistics) : {'data':statistics}"/>
 
+					    <t t-if="item.id === 'orders_by_size'">
+						    <t t-set="itemProp"
+						       t-value="{...itemProp, onSliceClick: openOrderBySize.bind(this)}"/>
+					    </t>
+
 					    <t t-component="item.Component" t-props="itemProp"/>
 
 				    </DashboardItem>

@@ -6,6 +6,7 @@ export class PieChart extends Component {
 
 	static props = {
 		data: Object,
+		onSliceClick: Function,
 	};
 
 	setup() {
@@ -51,6 +52,19 @@ export class PieChart extends Component {
 						data: Object.values(data),
 					},
 				],
+			},
+
+			options: {
+				onClick: (event,elements) => {
+					if(!elements.length) {
+						return;
+					}
+
+					const index = elements[0].index;
+					const size = Object.keys(data)[index];
+
+					this.props.onSliceClick(size);
+				},
 			},
 		});
 	}
