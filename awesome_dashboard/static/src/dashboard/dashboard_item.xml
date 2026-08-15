@@ -4,10 +4,9 @@
     <t t-name="awesome_dashboard.DashboardItem">
 
         <div
-            class="o_dashboard_item"
-            t-attf-style="width: {{ 18 * props.size }}rem;">
+            class="o_dashboard_item">
 
-            <div class="card h-100" style="background-color: black;">
+            <div class="card h-100" style="background-color: white;">
                 <div class="card-body">
                     <t t-slot="default"/>
                 </div>

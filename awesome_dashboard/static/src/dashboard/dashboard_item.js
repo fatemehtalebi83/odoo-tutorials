@@ -9,6 +9,10 @@ export class DashboardItem extends Component {
 			type: Number,
 			optional: true,
 		},
+		slots: {
+			type: Object,
+			optional: true,
+		},
 	};
 
 
