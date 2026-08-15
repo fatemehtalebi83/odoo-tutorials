@@ -20,6 +20,14 @@
                     Leads
                 </button>
 
+			    <button
+                    class="btn btn-secondary ms-2"
+                    t-on-click="openSettings"
+                    title="Settings"
+                >
+                    <i class="fa fa-cog"/>
+                </button>
+
             </t>
 
 		    <div class="d-flex flex-wrap gap-3 p-3">
