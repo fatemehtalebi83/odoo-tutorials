@@ -26,10 +26,10 @@
 
             <tooltip-template>
                 <p class="m-0">
-                    name: <t t-esc="name"/>
+                    name: <t t-out="name"/>
                 </p>
                 <p class="m-0">
-                    e-mail: <t t-esc="email"/>
+                    e-mail: <t t-out="email"/>
                 </p>
             </tooltip-template>
 

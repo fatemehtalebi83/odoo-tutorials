@@ -31,7 +31,7 @@ class GalleryItem extends Component {
                 const fieldName = field.getAttribute("name");
 
                 const tElement = document.createElement("t");
-                tElement.setAttribute("t-esc", `info.${fieldName}`);
+                tElement.setAttribute("t-out", `info.${fieldName}`);
 
                 field.replaceWith(tElement);
             }
@@ -48,8 +48,6 @@ class GalleryItem extends Component {
             template: this.tooltipTemplate,
             info: this.props.record,
         };
-
-        console.log("TOOLTIP PARAMS:", tooltipParams);
 
         useTooltip("tooltip", tooltipParams);
     }
